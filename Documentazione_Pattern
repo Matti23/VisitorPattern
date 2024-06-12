@@ -1,0 +1,43 @@
+1 -> Visitor
+    -   Definisce un'interfaccia per visitare gli elementi della struttura.
+    -   Ogni metodo visit corrisponde a una classe specifica della struttura.
+
+2 -> ConcreteVisitor
+    -   Implementa le operazioni definite nell'interfaccia Visitor.
+    -   Ogni metodo visit contiene la logica specifica per un elemento della struttura.
+3 -> Element
+    -   Definisce un'interfaccia per gli elementi della struttura.
+    -   Ogni metodo accept corrisponde a una classe specifica della struttura.
+4 -> ConcreteElement
+    -   Implementa le operazioni definite nell'interfaccia Element.
+    -   Ogni metodo accept contiene la logica specifica per un elemento della struttura.
+5 -> ObjectStructure
+    -   Definisce un'interfaccia per la rappresentazione dell'oggetto strutturale.
+    -   Ogni metodo accept corrisponde a una classe specifica dell'oggetto strutturale.
+6 -> ConcreteObjectStructure
+    -   Implementa le operazioni definite nell'interfaccia ObjectStructure.
+    -   Ogni metodo accept contiene la logica specifica per l'oggetto strutturale.
+
+    +-----------------+               +-----------------+
+|     Visitor     |<--------------|    Element      |
++-----------------+               +-----------------+
+| + visitA()      |               | + accept()      |
+| + visitB()      |               +-----------------+
++-----------------+                       /_\
+       /_\                                 |
+        |                                  |
++---------------------+      +---------------------+
+| ConcreteVisitor     |      | ConcreteElementA    |
++---------------------+      +---------------------+
+| + visitA()          |      | + accept(visitor)   |
+| + visitB()          |      +---------------------+
++---------------------+                 /_\
+        /_\                             |
+         |                              |
++---------------------+      +---------------------+
+| ObjectStructure     |      | ConcreteElementB    |
++---------------------+      +---------------------+
+| + addElement()      |      | + accept(visitor)   |
+| + accept(visitor)   |      +---------------------+
++---------------------+
+
